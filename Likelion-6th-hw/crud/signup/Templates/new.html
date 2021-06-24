@@ -1,10 +1,15 @@
+{% extends 'base.html' %}
+
+{% block conent %}
 <h1>Write Your information</h1>
 
-<form action="{% url 'create' %}" method="POST">
+<form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <p>이름: <input type="text" name="name"></p>
     <p>나이: <input type="text" name="age"></p>
     <p>이메일: <input type="email" name="email"></p>
+    <p>사진: <input type="file" name="image"></p>
     자기소개: <textarea name="introduce" cols="30" rows="10"></textarea>
     <button type="submit">Submit</button>
 </form>
+{% endblock %}

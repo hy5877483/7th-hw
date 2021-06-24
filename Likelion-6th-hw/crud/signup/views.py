@@ -1,7 +1,7 @@
 from functools import singledispatch
 from django.shortcuts import redirect, render, get_object_or_404
-from .models import Signup
 from django.utils import timezone
+from .models import Signup
 
 # Create your views here.
 def home(request):
@@ -22,6 +22,7 @@ def create(request):
     new_blog.email = request.POST['email']
     new_blog.pub_date = timezone.now()
     new_blog.introduce = request.POST['introduce']
+    new_blog.image = request.FILES['image']
     new_blog.save()
     return redirect('detail',str(new_blog.id))
 
